@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.slf4j.Logger;
+import org.aspectj.lang.JoinPoint;
 
 @Aspect
 @Component
@@ -22,6 +23,6 @@ public class ApplicationLoggerAspect {
 
     @After("definePackagePointcuts()")
     public void log(){
-        log.debug("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        log.debug("-----------------------");
     }
 }
