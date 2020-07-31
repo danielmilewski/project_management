@@ -2,6 +2,7 @@ package com.jrp.pma;
 
 import com.jrp.pma.dao.EmployeeReposiotry;
 import com.jrp.pma.dao.ProjectRepository;
+import com.jrp.pma.dao.UserAccountRepository;
 import com.jrp.pma.entities.Employee;
 import com.jrp.pma.entities.Project;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ public class ProjectManagementApplication {
 
     @Autowired
     ProjectRepository projRepo;
+
 
 
     public static void main(String[] args) {
