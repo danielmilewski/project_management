@@ -1,8 +1,12 @@
 package com.jrp.pma.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jrp.pma.validators.UniqueValue;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -13,8 +17,18 @@ public class Employee {
     @SequenceGenerator(name = "employee_seq", sequenceName = "employee_seq", allocationSize = 1)
     private long employeeId;
 
+    @NotNull
+    @Size(min=2, max = 50)
     private String firstName;
+
+    @NotNull
+    @Size(min=1, max = 50)
     private String lastName;
+
+    @NotNull
+    @Email
+    @Column(unique = true)
+    @UniqueValue
     private String email;
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
