@@ -5,6 +5,8 @@ import com.jrp.pma.entities.Employee;
 import com.jrp.pma.entities.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -74,6 +76,15 @@ public class ProjectApiController {
         } catch (EmptyResultDataAccessException e) {
 
             }
+    }
+
+    @GetMapping(params = {"page", "size"})
+    @ResponseStatus(HttpStatus.OK)
+    public Iterable<Project> findPaginatedProjects(@RequestParam("page") int page,
+                                                     @RequestParam("size") int size){
+        Pageable pageAndSize = PageRequest.of(page, size);
+
+        return proRepo.findAll(pageAndSize);
     }
 }
 
