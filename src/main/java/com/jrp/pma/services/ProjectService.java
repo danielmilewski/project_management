@@ -27,4 +27,6 @@ public class ProjectService {
     public List<ChartData> getProjectStatus(){
         return proRepo.getProjectStatus();
     }
+
+
 }

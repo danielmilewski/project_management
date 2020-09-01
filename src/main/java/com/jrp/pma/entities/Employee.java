@@ -5,6 +5,7 @@ import com.jrp.pma.validators.UniqueValue;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -17,16 +18,16 @@ public class Employee {
     @SequenceGenerator(name = "employee_seq", sequenceName = "employee_seq", allocationSize = 1)
     private long employeeId;
 
-    @NotNull
+    @NotBlank(message = "Must give a first name")
     @Size(min=2, max = 50)
     private String firstName;
 
-    @NotNull
+    @NotBlank(message = "Must give a last name")
     @Size(min=1, max = 50)
     private String lastName;
 
-    @NotNull
-    @Email
+    @NotBlank
+    @Email(message = "Must be a valid email address")
     @Column(unique = true)
     @UniqueValue
     private String email;
